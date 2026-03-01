@@ -3,84 +3,84 @@ import { useLanguage } from '../context/LanguageContext'
 import ProgressTracker from '../components/ProgressTracker'
 import './Home.css'
 
-const quickNavCards = [
-  {
-    to: '/getting-started',
-    icon: '🎮',
-    title: 'Getting Started',
-    desc: 'New to MLBB? Learn the basics, game modes, controls, and beginner tips to hit the ground running.',
-    badge: 'Beginner',
-    color: 'green',
-  },
-  {
-    to: '/game-mechanics',
-    icon: '⚙️',
-    title: 'Game Mechanics',
-    desc: 'Master the map, gold & EXP system, all 6 roles, emblems, battle spells, and item builds.',
-    badge: 'Core',
-    color: 'blue',
-  },
-  {
-    to: '/hero-guides',
-    icon: '🦸',
-    title: 'Hero Guides',
-    desc: 'Browse 30+ heroes with role, difficulty, recommended spells, and essential gameplay tips.',
-    badge: 'Essential',
-    color: 'gold',
-  },
-  {
-    to: '/intermediate',
-    icon: '📈',
-    title: 'Intermediate',
-    desc: 'Improve your farming, map awareness, rotation, and objective control to climb the ranked ladder.',
-    badge: 'Intermediate',
-    color: 'orange',
-  },
-  {
-    to: '/advanced',
-    icon: '🏆',
-    title: 'Advanced',
-    desc: 'Advanced macro & micro strategies, counter-jungling, ranked climbing, and mental game.',
-    badge: 'Advanced',
-    color: 'red',
-  },
-  {
-    to: '/pro-resources',
-    icon: '⭐',
-    title: 'Pro Resources',
-    desc: 'Top content creators, official MPL esports channels, and world championship resources.',
-    badge: 'Pro',
-    color: 'purple',
-  },
-]
-
-const benefits = [
-  {
-    icon: '📚',
-    title: 'Structured Learning',
-    desc: 'Organized from absolute beginner to advanced strategies. Follow the path or jump to what you need.',
-  },
-  {
-    icon: '🎯',
-    title: 'Hero-Specific Tips',
-    desc: 'Detailed guides for 30+ heroes across all 6 roles with difficulty ratings and key combos.',
-  },
-  {
-    icon: '🔄',
-    title: 'Always Updated',
-    desc: 'Reflects current meta strategies and the most relevant content creators in the MLBB community.',
-  },
-]
-
-const tips = [
-  { icon: '💡', tip: 'Always check the minimap every 3–5 seconds — map awareness wins games.', tag: 'Awareness' },
-  { icon: '⚔️', tip: 'Prioritize Turtle in the early game (before 4 min) for a big gold advantage.', tag: 'Objectives' },
-  { icon: '🛡️', tip: 'Your tank should always rotate to pushed lanes to prevent turret loss.', tag: 'Rotation' },
-  { icon: '💰', tip: 'Last-hitting creeps gives you more gold — aim for every last hit in lane.', tag: 'Farming' },
-]
-
 export default function Home() {
   const { t } = useLanguage()
+
+  const quickNavCards = [
+    {
+      to: '/getting-started',
+      icon: '🎮',
+      title: t('home.card.gs.title'),
+      desc: t('home.card.gs.desc'),
+      badge: t('home.card.gs.badge'),
+      color: 'green',
+    },
+    {
+      to: '/game-mechanics',
+      icon: '⚙️',
+      title: t('home.card.gm.title'),
+      desc: t('home.card.gm.desc'),
+      badge: t('home.card.gm.badge'),
+      color: 'blue',
+    },
+    {
+      to: '/hero-guides',
+      icon: '🦸',
+      title: t('home.card.hg.title'),
+      desc: t('home.card.hg.desc'),
+      badge: t('home.card.hg.badge'),
+      color: 'gold',
+    },
+    {
+      to: '/intermediate',
+      icon: '📈',
+      title: t('home.card.int.title'),
+      desc: t('home.card.int.desc'),
+      badge: t('home.card.int.badge'),
+      color: 'orange',
+    },
+    {
+      to: '/advanced',
+      icon: '🏆',
+      title: t('home.card.adv.title'),
+      desc: t('home.card.adv.desc'),
+      badge: t('home.card.adv.badge'),
+      color: 'red',
+    },
+    {
+      to: '/pro-resources',
+      icon: '⭐',
+      title: t('home.card.pro.title'),
+      desc: t('home.card.pro.desc'),
+      badge: t('home.card.pro.badge'),
+      color: 'purple',
+    },
+  ]
+
+  const benefits = [
+    {
+      icon: '📚',
+      title: t('home.benefit.structured.title'),
+      desc: t('home.benefit.structured.desc'),
+    },
+    {
+      icon: '🎯',
+      title: t('home.benefit.hero.title'),
+      desc: t('home.benefit.hero.desc'),
+    },
+    {
+      icon: '🔄',
+      title: t('home.benefit.updated.title'),
+      desc: t('home.benefit.updated.desc'),
+    },
+  ]
+
+  const tips = [
+    { icon: '💡', tip: t('home.tip.awareness'), tag: 'Awareness' },
+    { icon: '⚔️', tip: t('home.tip.objectives'), tag: 'Objectives' },
+    { icon: '🛡️', tip: t('home.tip.rotation'), tag: 'Rotation' },
+    { icon: '💰', tip: t('home.tip.farming'), tag: 'Farming' },
+  ]
 
   return (
     <div className="home">

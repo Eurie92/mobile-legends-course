@@ -1,59 +1,33 @@
 import { useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
+import { useLanguage } from '../context/LanguageContext'
 import './GettingStarted.css'
 
-const gameModes = [
-  { icon: '⚔️', name: 'Classic', desc: 'Standard 5v5 match. Best for practicing heroes and strategies without rank pressure. Great for beginners.' },
-  { icon: '🏆', name: 'Ranked', desc: 'Competitive mode where you earn rank points. Play here once you understand your preferred role and a few heroes.' },
-  { icon: '🎲', name: 'Brawl', desc: 'Chaotic single-lane random hero mode. Fast matches. Good for understanding hero abilities quickly.' },
-  { icon: '🛠️', name: 'Custom', desc: 'Create private rooms to practice with friends or specific scenarios. Useful for testing combos.' },
-  { icon: '🎉', name: 'Arcade', desc: 'Rotating fun mini-game modes. Perfect for a break from serious play. New modes regularly added.' },
-  { icon: '🤖', name: 'vs. AI', desc: 'Fight against bots. Ideal when first learning a new hero or warming up before a ranked session.' },
-]
-
-const begTips = [
-  { icon: '🎯', tip: 'Start with easy-difficulty heroes like Miya, Freya, or Rafaela.' },
-  { icon: '🗺️', tip: 'Check the minimap every few seconds — map awareness is crucial.' },
-  { icon: '🤝', tip: 'Stay with teammates early game; avoid going alone in enemy territory.' },
-  { icon: '⚡', tip: 'Use your battle spell (like Flicker) wisely — it has a long cooldown.' },
-  { icon: '🛡️', tip: 'Don\'t sell items to buy others — upgrade them as the game progresses.' },
-  { icon: '💬', tip: 'Mute toxic players immediately. Mental focus wins games.' },
-  { icon: '📖', tip: 'Read item descriptions to understand what you\'re buying.' },
-  { icon: '🔄', tip: 'Play both Classic and vs. AI before entering ranked matches.' },
-]
-
-const mistakes = [
-  { mistake: 'Overextending alone', fix: 'Always check the minimap before pushing deep into enemy territory.' },
-  { mistake: 'Buying random items', fix: 'Follow recommended builds or guides for your hero\'s role.' },
-  { mistake: 'Ignoring objectives', fix: 'Always contest Turtle (early game) and Lord (late game).' },
-  { mistake: 'Never rotating', fix: 'Help teammates in other lanes when your lane is safe.' },
-  { mistake: 'Staying in base too long', fix: 'Return to lane or rotate as soon as you\'ve spent your gold.' },
-]
-
-const quizData = [
-  {
-    q: 'Which game mode is best for beginners to learn without rank pressure?',
-    options: ['Ranked', 'Classic', 'Brawl', 'vs. AI'],
-    answer: 1,
-    explanation: 'Classic mode is the standard 5v5 match without rank stakes — perfect for practice.',
-  },
-  {
-    q: 'What is the most important map habit to develop as a beginner?',
-    options: ['Always pushing turrets', 'Checking the minimap regularly', 'Buying expensive items first', 'Fighting under enemy turret'],
-    answer: 1,
-    explanation: 'Map awareness via the minimap is the single most impactful habit to build early.',
-  },
-  {
-    q: 'Which of these is NOT a standard role in MLBB?',
-    options: ['Marksman', 'Support', 'Healer', 'Assassin'],
-    answer: 2,
-    explanation: 'The 6 roles are: Tank, Fighter, Assassin, Mage, Marksman, and Support. There is no dedicated "Healer" role.',
-  },
-]
-
 function Quiz() {
+  const { t } = useLanguage()
   const [answers, setAnswers] = useState({})
   const [revealed, setRevealed] = useState({})
+
+  const quizData = [
+    {
+      q: t('gs.quiz.q1'),
+      options: [t('gs.quiz.q1.a'), t('gs.quiz.q1.b'), t('gs.quiz.q1.c'), t('gs.quiz.q1.d')],
+      answer: 1,
+      explanation: t('gs.quiz.q1.explain'),
+    },
+    {
+      q: t('gs.quiz.q2'),
+      options: [t('gs.quiz.q2.a'), t('gs.quiz.q2.b'), t('gs.quiz.q2.c'), t('gs.quiz.q2.d')],
+      answer: 1,
+      explanation: t('gs.quiz.q2.explain'),
+    },
+    {
+      q: t('gs.quiz.q3'),
+      options: [t('gs.quiz.q3.a'), t('gs.quiz.q3.b'), t('gs.quiz.q3.c'), t('gs.quiz.q3.d')],
+      answer: 2,
+      explanation: t('gs.quiz.q3.explain'),
+    },
+  ]
 
   const selectAnswer = (qi, oi) => {
     if (revealed[qi]) return
@@ -69,7 +43,7 @@ function Quiz() {
 
   return (
     <div className="quiz-container">
-      <h3 className="quiz-title">🧠 Knowledge Check</h3>
+      <h3 className="quiz-title">{t('gs.quiz.title')}</h3>
       {quizData.map((q, qi) => (
         <div key={qi} className="quiz-question">
           <p className="quiz-q-text"><strong>Q{qi + 1}:</strong> {q.q}</p>
@@ -109,29 +83,59 @@ function Quiz() {
 }
 
 export default function GettingStarted() {
+  const { t } = useLanguage()
+
+  const gameModes = [
+    { icon: '⚔️', name: t('gs.mode.classic.name'), desc: t('gs.mode.classic.desc') },
+    { icon: '🏆', name: t('gs.mode.ranked.name'), desc: t('gs.mode.ranked.desc') },
+    { icon: '🎲', name: t('gs.mode.brawl.name'), desc: t('gs.mode.brawl.desc') },
+    { icon: '🛠️', name: t('gs.mode.custom.name'), desc: t('gs.mode.custom.desc') },
+    { icon: '🎉', name: t('gs.mode.arcade.name'), desc: t('gs.mode.arcade.desc') },
+    { icon: '🤖', name: t('gs.mode.ai.name'), desc: t('gs.mode.ai.desc') },
+  ]
+
+  const begTips = [
+    { icon: '🎯', tip: t('gs.tip.1') },
+    { icon: '🗺️', tip: t('gs.tip.2') },
+    { icon: '🤝', tip: t('gs.tip.3') },
+    { icon: '⚡', tip: t('gs.tip.4') },
+    { icon: '🛡️', tip: t('gs.tip.5') },
+    { icon: '💬', tip: t('gs.tip.6') },
+    { icon: '📖', tip: t('gs.tip.7') },
+    { icon: '🔄', tip: t('gs.tip.8') },
+  ]
+
+  const mistakes = [
+    { mistake: t('gs.mistake.1.mistake'), fix: t('gs.mistake.1.fix') },
+    { mistake: t('gs.mistake.2.mistake'), fix: t('gs.mistake.2.fix') },
+    { mistake: t('gs.mistake.3.mistake'), fix: t('gs.mistake.3.fix') },
+    { mistake: t('gs.mistake.4.mistake'), fix: t('gs.mistake.4.fix') },
+    { mistake: t('gs.mistake.5.mistake'), fix: t('gs.mistake.5.fix') },
+  ]
+
   return (
     <div className="getting-started">
       <Breadcrumb />
       <div className="page-header">
         <div className="container">
-          <span className="page-tag">🎮 Beginner</span>
-          <h1 className="section-title">Getting <span>Started</span></h1>
-          <p className="section-subtitle">Everything you need to know to download, set up, and play your first matches in Mobile Legends: Bang Bang.</p>
+          <span className="page-tag">{t('gs.tag')}</span>
+          <h1 className="section-title">{t('gs.title.1')}<span>{t('gs.title.2')}</span></h1>
+          <p className="section-subtitle">{t('gs.subtitle')}</p>
         </div>
       </div>
 
       {/* What is MLBB */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">What is <span>Mobile Legends: Bang Bang?</span></h2>
+          <h2 className="section-title">{t('gs.what.title.1')}<span>{t('gs.what.title.2')}</span></h2>
           <div className="gs-intro-grid">
             <div className="gs-intro-text">
-              <p>Mobile Legends: Bang Bang (MLBB) is a 5v5 multiplayer online battle arena (MOBA) game developed by Moonton. Released in 2016, it has grown into one of the most popular mobile games in Southeast Asia and worldwide, with millions of daily players.</p>
-              <p style={{marginTop: '16px'}}>Two teams of 5 players each compete to destroy the enemy's base (the Nexus). The map has three main lanes — Top, Mid, and Bottom — connected by a jungle. Each player controls a unique hero with special abilities.</p>
-              <p style={{marginTop: '16px'}}>Matches typically last 15–25 minutes, making MLBB perfect for mobile play sessions.</p>
+              <p>{t('gs.what.p1')}</p>
+              <p style={{marginTop: '16px'}}>{t('gs.what.p2')}</p>
+              <p style={{marginTop: '16px'}}>{t('gs.what.p3')}</p>
             </div>
             <div className="gs-intro-facts">
-              <h3>⚡ Quick Facts</h3>
+              <h3>{t('gs.facts.title')}</h3>
               <ul>
                 <li>📱 Free-to-play on iOS and Android</li>
                 <li>🌍 100+ million downloads worldwide</li>
@@ -152,15 +156,15 @@ export default function GettingStarted() {
       {/* Download & Setup */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Download & <span>Setup</span></h2>
+          <h2 className="section-title">{t('gs.download.title.1')}<span>{t('gs.download.title.2')}</span></h2>
           <div className="steps-grid">
             {[
-              { step: 1, icon: '📲', title: 'Download the App', desc: 'Search "Mobile Legends: Bang Bang" on the App Store (iOS) or Google Play Store (Android). The download is free.' },
-              { step: 2, icon: '🔐', title: 'Create an Account', desc: 'Log in with Facebook, Google, Moonton, or VK. Using Facebook/Google links your account across devices safely.' },
-              { step: 3, icon: '🎓', title: 'Complete the Tutorial', desc: 'MLBB has a built-in tutorial. Complete it fully — it teaches movement, skills, attacking, and objectives.' },
-              { step: 4, icon: '⚙️', title: 'Adjust Settings', desc: 'Go to Settings → Controls. Enable "Smart Targeting" early on. Adjust skill button size and layout to your comfort.' },
-              { step: 5, icon: '🦸', title: 'Try Free Heroes', desc: 'MLBB provides free rotating heroes each week. Experiment with them to discover your preferred role.' },
-              { step: 6, icon: '🎮', title: 'Play vs. AI First', desc: 'Play a few Bot matches before jumping into Classic or Ranked. Get comfortable with your hero first.' },
+              { step: 1, icon: '📲', title: t('gs.step.1.title'), desc: t('gs.step.1.desc') },
+              { step: 2, icon: '🔐', title: t('gs.step.2.title'), desc: t('gs.step.2.desc') },
+              { step: 3, icon: '🎓', title: t('gs.step.3.title'), desc: t('gs.step.3.desc') },
+              { step: 4, icon: '⚙️', title: t('gs.step.4.title'), desc: t('gs.step.4.desc') },
+              { step: 5, icon: '🦸', title: t('gs.step.5.title'), desc: t('gs.step.5.desc') },
+              { step: 6, icon: '🎮', title: t('gs.step.6.title'), desc: t('gs.step.6.desc') },
             ].map(({ step, icon, title, desc }) => (
               <div key={step} className="step-card card">
                 <div className="step-num">{step}</div>
@@ -176,15 +180,15 @@ export default function GettingStarted() {
       {/* UI Overview */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">In-Game <span>UI Overview</span></h2>
+          <h2 className="section-title">{t('gs.ui.title.1')}<span>{t('gs.ui.title.2')}</span></h2>
           <div className="ui-grid">
             {[
-              { pos: 'Top Left', icon: '🗺️', label: 'Minimap', desc: 'Shows real-time positions of all visible heroes. Check it every 3–5 seconds.' },
-              { pos: 'Top Center', icon: '⏱️', label: 'Timer & Score', desc: 'Game clock, kill score, and gold advantage display.' },
-              { pos: 'Top Right', icon: '💰', label: 'Gold Counter', desc: 'Your current gold. Tells you how close you are to your next item.' },
-              { pos: 'Bottom Left', icon: '🎮', label: 'Movement Joystick', desc: 'Drag to move your hero. Tap briefly to stop and auto-attack nearest enemy.' },
-              { pos: 'Bottom Right', icon: '⚡', label: 'Skill Buttons', desc: 'Your hero\'s 3 skills plus basic attack. Skill 2 is usually your key ability.' },
-              { pos: 'Bottom Center', icon: '🧪', label: 'Battle Spell', desc: 'Special ability (Flicker, Retribution, etc.) chosen before the match.' },
+              { pos: 'Top Left', icon: '🗺️', label: t('gs.ui.minimap.label'), desc: t('gs.ui.minimap.desc') },
+              { pos: 'Top Center', icon: '⏱️', label: t('gs.ui.timer.label'), desc: t('gs.ui.timer.desc') },
+              { pos: 'Top Right', icon: '💰', label: t('gs.ui.gold.label'), desc: t('gs.ui.gold.desc') },
+              { pos: 'Bottom Left', icon: '🎮', label: t('gs.ui.joystick.label'), desc: t('gs.ui.joystick.desc') },
+              { pos: 'Bottom Right', icon: '⚡', label: t('gs.ui.skills.label'), desc: t('gs.ui.skills.desc') },
+              { pos: 'Bottom Center', icon: '🧪', label: t('gs.ui.spell.label'), desc: t('gs.ui.spell.desc') },
             ].map(({ pos, icon, label, desc }) => (
               <div key={pos} className="ui-card card">
                 <div className="ui-pos">{pos}</div>
@@ -200,8 +204,8 @@ export default function GettingStarted() {
       {/* Game Modes */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Game <span>Modes</span></h2>
-          <p className="section-subtitle">MLBB offers multiple modes to suit every play style and mood.</p>
+          <h2 className="section-title">{t('gs.modes.title.1')}<span>{t('gs.modes.title.2')}</span></h2>
+          <p className="section-subtitle">{t('gs.modes.subtitle')}</p>
           <div className="grid-3">
             {gameModes.map(({ icon, name, desc }) => (
               <div key={name} className="mode-card card">
@@ -217,7 +221,7 @@ export default function GettingStarted() {
       {/* Beginner Tips */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Beginner <span>Tips</span></h2>
+          <h2 className="section-title">{t('gs.tips.title.1')}<span>{t('gs.tips.title.2')}</span></h2>
           <div className="tips-list">
             {begTips.map(({ icon, tip }) => (
               <div key={tip} className="tip-row">
@@ -232,11 +236,11 @@ export default function GettingStarted() {
       {/* Common Mistakes */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Common <span>Mistakes & Fixes</span></h2>
+          <h2 className="section-title">{t('gs.mistakes.title.1')}<span>{t('gs.mistakes.title.2')}</span></h2>
           <div className="mistakes-table">
             <div className="mistakes-header">
-              <span>❌ Common Mistake</span>
-              <span>✅ The Fix</span>
+              <span>{t('gs.mistakes.header.mistake')}</span>
+              <span>{t('gs.mistakes.header.fix')}</span>
             </div>
             {mistakes.map(({ mistake, fix }) => (
               <div key={mistake} className="mistakes-row">
