@@ -119,6 +119,24 @@ const creators = [
     desc: 'Educational content focusing on hero guides, optimal builds, and meta-relevant strategies for improving ranked performance.',
     tags: ['Hero Guides', 'Builds', 'Educational'],
   },
+  {
+    name: 'Bethings',
+    platform: 'YouTube/Facebook',
+    icon: '▶️',
+    specialty: 'Filipino educational gameplay and hero tutorials',
+    url: 'https://www.youtube.com/@Bethings',
+    desc: 'A popular Filipino MLBB creator known for detailed hero tutorials, gameplay analysis, and practical tips that help players improve their ranked performance. Great resource for Tagalog-speaking players.',
+    tags: ['Filipino', 'Tutorials', 'Educational'],
+  },
+  {
+    name: 'Fuego',
+    platform: 'YouTube/Facebook',
+    icon: '▶️',
+    specialty: 'High-level gameplay and strategy guides',
+    url: 'https://www.youtube.com/@Fuego',
+    desc: 'Fuego delivers high-level MLBB strategy content including advanced rotations, meta analysis, and ranked climbing tips. Known for in-depth breakdowns that help players understand the "why" behind every play.',
+    tags: ['Strategy', 'Meta', 'High-Level'],
+  },
 ]
 
 const mplLeagues = [

@@ -4,7 +4,8 @@ import './About.css'
 
 const featuredCreators = [
   'Betosky', 'Hororo Chan', 'Assassin Dave', 'Shinmen Takezo', 'Elgin',
-  'Mobazane', 'ChooxTv (Sugianto)', 'Akos', 'General', 'R7', 'JEWO', 'Gemik', 'JEff Official'
+  'Mobazane', 'ChooxTv (Sugianto)', 'Akos', 'General', 'R7', 'JEWO', 'Gemik', 'JEff Official',
+  'Bethings', 'Fuego'
 ]
 
 export default function About() {
@@ -35,7 +36,7 @@ export default function About() {
                 { icon: '📚', label: 'Course Sections', value: '9' },
                 { icon: '🦸', label: 'Hero Guides', value: '30+' },
                 { icon: '📖', label: 'Glossary Terms', value: '45+' },
-                { icon: '⭐', label: 'Featured Creators', value: '13' },
+                { icon: '⭐', label: 'Featured Creators', value: '15' },
                 { icon: '🌍', label: 'MPL Regions Covered', value: '6+' },
                 { icon: '💰', label: 'Cost to Use', value: 'Free Forever' },
               ].map(({ icon, label, value }) => (
