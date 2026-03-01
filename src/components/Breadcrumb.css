@@ -1,0 +1,26 @@
+.breadcrumb {
+  background: rgba(255,215,0,0.04);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 10px 0;
+}
+
+.breadcrumb .container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.breadcrumb-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb-link:hover { color: var(--accent-gold); }
+
+.breadcrumb-sep { color: #4a5568; }
+
+.breadcrumb-current {
+  color: var(--accent-gold);
+  font-weight: 600;
+}

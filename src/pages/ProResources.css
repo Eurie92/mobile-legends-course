@@ -1,0 +1,217 @@
+.pro-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+/* Creators */
+.creators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.creator-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.creator-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.creator-avatar {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background: var(--gradient-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0a0e1a;
+}
+
+.creator-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.creator-platform {
+  font-size: 0.78rem;
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.creator-specialty {
+  font-size: 0.82rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.creator-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.creator-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.creator-tag {
+  background: rgba(26,159,255,0.1);
+  border: 1px solid rgba(26,159,255,0.2);
+  color: var(--accent-blue);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  letter-spacing: 0.3px;
+}
+
+.creator-link {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid rgba(255,215,0,0.3);
+  color: var(--accent-gold);
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+.creator-link:hover {
+  background: rgba(255,215,0,0.1);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* MPL */
+.mpl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.mpl-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.mpl-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-gold);
+}
+
+.mpl-flag { font-size: 2.5rem; }
+
+.mpl-info { display: flex; align-items: baseline; gap: 8px; }
+
+.mpl-region {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mpl-full {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.mpl-note {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.mpl-watch {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  align-self: flex-start;
+}
+
+/* M-Series */
+.mseries-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.mseries-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mseries-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+.ms-label { color: var(--text-secondary); }
+.ms-value { color: var(--accent-gold); font-weight: 600; font-family: var(--font-heading); }
+
+.mseries-champions { padding: 24px; }
+.mseries-champions h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 16px;
+}
+
+.champion-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1fr;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.82rem;
+  align-items: center;
+}
+.champion-row:last-child { border-bottom: none; }
+.champion-edition { color: var(--text-secondary); }
+.champion-team { color: var(--text-primary); font-weight: 600; }
+.champion-region { color: var(--accent-blue); font-size: 0.78rem; }
+
+/* Why Watch */
+.why-card { text-align: center; }
+.why-icon { font-size: 2rem; display: block; margin-bottom: 10px; }
+.why-title { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+.why-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+@media (max-width: 768px) {
+  .mseries-content { grid-template-columns: 1fr; }
+  .creators-grid { grid-template-columns: 1fr; }
+}
