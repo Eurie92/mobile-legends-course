@@ -1,4 +1,5 @@
 import Breadcrumb from '../components/Breadcrumb'
+import { useLanguage } from '../context/LanguageContext'
 import './PatchNotes.css'
 
 const patchSources = [
@@ -34,7 +35,7 @@ const patchSources = [
     name: 'Bethings (YouTube/Facebook)',
     icon: '▶️',
     url: 'https://www.youtube.com/@Bethings',
-    desc: 'Bethings covers patch updates in Tagalog/Filipino, making it a great resource for Filipino players who want to understand patch changes in their native language.',
+    desc: 'Bethings covers patch updates in Tagalog/Filipino with detailed hero-by-hero analysis, explaining which heroes got stronger or weaker and why. Bethings also provides practical tips on how to adapt your gameplay after each patch, making it the go-to resource for Filipino players who want to stay ahead of the meta in their native language.',
     type: 'Creator',
   },
   {
@@ -72,22 +73,23 @@ const patchTerms = [
 ]
 
 export default function PatchNotes() {
+  const { t } = useLanguage()
   return (
     <div className="patch-notes">
       <Breadcrumb />
       <div className="page-header">
         <div className="container">
-          <span className="page-tag">📋 Patch Updates</span>
-          <h1 className="section-title">Patch <span>Notes</span></h1>
-          <p className="section-subtitle">Stay updated with the latest MLBB patches. Learn where to find patch notes, how to analyze changes, and adapt your gameplay to every update.</p>
+          <span className="page-tag">{t('patch.tag')}</span>
+          <h1 className="section-title">{t('patch.title.1')}<span>{t('patch.title.2')}</span></h1>
+          <p className="section-subtitle">{t('patch.subtitle')}</p>
         </div>
       </div>
 
       {/* Where to Find Patch Notes */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Where to Find <span>Patch Notes</span></h2>
-          <p className="section-subtitle">Multiple sources to stay informed about every MLBB update.</p>
+          <h2 className="section-title">{t('patch.where.title.1')}<span>{t('patch.where.title.2')}</span></h2>
+          <p className="section-subtitle">{t('patch.where.subtitle')}</p>
           <div className="patch-sources-grid">
             {patchSources.map(({ name, icon, url, desc, type }) => (
               <div key={name} className="patch-source-card card">
@@ -101,7 +103,7 @@ export default function PatchNotes() {
                 <p className="patch-source-desc">{desc}</p>
                 {url && (
                   <a href={url} target="_blank" rel="noopener noreferrer" className="patch-source-link">
-                    Visit Source →
+                    {t('patch.visit')}
                   </a>
                 )}
               </div>
@@ -113,8 +115,8 @@ export default function PatchNotes() {
       {/* How to Analyze a Patch */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">How to Analyze <span>a New Patch</span></h2>
-          <p className="section-subtitle">Follow this checklist every time a new patch drops to stay ahead of the meta.</p>
+          <h2 className="section-title">{t('patch.analyze.title.1')}<span>{t('patch.analyze.title.2')}</span></h2>
+          <p className="section-subtitle">{t('patch.analyze.subtitle')}</p>
           <div className="patch-checklist-grid">
             {patchChecklist.map(({ icon, title, desc }, i) => (
               <div key={i} className="patch-checklist-item card">
@@ -133,8 +135,8 @@ export default function PatchNotes() {
       {/* Patch Terminology */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Patch <span>Terminology</span></h2>
-          <p className="section-subtitle">Common terms you will see in patch notes and what they mean.</p>
+          <h2 className="section-title">{t('patch.terms.title.1')}<span>{t('patch.terms.title.2')}</span></h2>
+          <p className="section-subtitle">{t('patch.terms.subtitle')}</p>
           <div className="patch-terms-grid">
             {patchTerms.map(({ term, icon, meaning }) => (
               <div key={term} className="patch-term-card card">
@@ -152,10 +154,10 @@ export default function PatchNotes() {
       {/* Patch Cycle Info */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">MLBB Patch <span>Cycle</span></h2>
+          <h2 className="section-title">{t('patch.cycle.title.1')}<span>{t('patch.cycle.title.2')}</span></h2>
           <div className="patch-cycle-content">
             <div className="patch-cycle-info">
-              <p className="patch-text">MLBB typically releases patches every 2–4 weeks. Major patches include hero adjustments, new heroes, item changes, and sometimes map modifications. Understanding the patch cycle helps you prepare and adapt faster than your opponents.</p>
+              <p className="patch-text">{t('patch.cycle.desc')}</p>
               <div className="patch-cycle-stats">
                 {[
                   { label: 'Patch Frequency', value: 'Every 2–4 weeks' },
@@ -171,7 +173,7 @@ export default function PatchNotes() {
               </div>
             </div>
             <div className="patch-tips-box card">
-              <h3>💡 Pro Tips for Patch Day</h3>
+              <h3>{t('patch.cycle.tips.title')}</h3>
               <ul className="patch-tips-list">
                 <li>Don't panic if your main hero is nerfed — test them before switching.</li>
                 <li>Watch creator breakdowns within 24 hours of a patch for quick analysis.</li>

@@ -1,26 +1,25 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { useLanguage } from '../context/LanguageContext'
 import LanguageToggle from './LanguageToggle'
 import './Navbar.css'
 
 const navLinks = [
-  { to: '/', labelKey: 'nav.home' },
-  { to: '/getting-started', labelKey: 'nav.getting-started' },
-  { to: '/game-mechanics', labelKey: 'nav.game-mechanics' },
-  { to: '/hero-guides', labelKey: 'nav.hero-guides' },
-  { to: '/intermediate', labelKey: 'nav.intermediate' },
-  { to: '/advanced', labelKey: 'nav.advanced' },
-  { to: '/pro-resources', labelKey: 'nav.pro-resources' },
-  { to: '/patch-notes', labelKey: 'nav.patch-notes' },
-  { to: '/glossary', labelKey: 'nav.glossary' },
-  { to: '/about', labelKey: 'nav.about' },
+  { to: '/', label: 'Home' },
+  { to: '/getting-started', label: 'Getting Started' },
+  { to: '/game-mechanics', label: 'Game Mechanics' },
+  { to: '/hero-guides', label: 'Hero Guides' },
+  { to: '/intermediate', label: 'Intermediate' },
+  { to: '/advanced', label: 'Advanced' },
+  { to: '/pro-resources', label: 'Pro Resources' },
+  { to: '/patch-notes', label: 'Patch Notes' },
+  { to: '/glossary', label: 'Glossary' },
+  { to: '/about', label: 'About' },
 ]
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const { t } = useLanguage()
+  /* Navbar always displays in English */
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -50,7 +49,7 @@ export default function Navbar() {
         </div>
 
         <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
-          {navLinks.map(({ to, labelKey }) => (
+          {navLinks.map(({ to, label }) => (
             <li key={to}>
               <NavLink
                 to={to}
@@ -58,7 +57,7 @@ export default function Navbar() {
                 className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
                 onClick={closeMenu}
               >
-                {t(labelKey)}
+                {label}
               </NavLink>
             </li>
           ))}

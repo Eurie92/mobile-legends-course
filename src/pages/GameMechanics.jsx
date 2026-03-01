@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
+import { useLanguage } from '../context/LanguageContext'
 import './GameMechanics.css'
 
 const roles = [
@@ -99,26 +100,27 @@ function DifficultyStars({ count }) {
 
 export default function GameMechanics() {
   const [activeRole, setActiveRole] = useState(0)
+  const { t } = useLanguage()
 
   return (
     <div className="game-mechanics">
       <Breadcrumb />
       <div className="page-header">
         <div className="container">
-          <span className="page-tag">⚙️ Core</span>
-          <h1 className="section-title">Game <span>Mechanics</span></h1>
-          <p className="section-subtitle">Master the map, economy, roles, emblems, and spells to build a strong foundation for every match.</p>
+          <span className="page-tag">{t('gm.tag')}</span>
+          <h1 className="section-title">{t('gm.title.1')}<span>{t('gm.title.2')}</span></h1>
+          <p className="section-subtitle">{t('gm.subtitle')}</p>
         </div>
       </div>
 
       {/* The Map */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">The Map: <span>Land of Dawn</span></h2>
+          <h2 className="section-title">{t('gm.map.title.1')}<span>{t('gm.map.title.2')}</span></h2>
           <div className="map-grid">
             <div className="map-info">
               <p style={{color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 20}}>
-                The battle takes place on a symmetrical map called the Land of Dawn. It is divided into two halves — blue side (your team) and red side (enemies). Three lanes connect the bases, with a jungle in between.
+                {t('gm.map.desc')}
               </p>
               <div className="lanes-list">
                 {[
@@ -140,7 +142,7 @@ export default function GameMechanics() {
               </div>
             </div>
             <div className="map-objectives">
-              <h3 className="obj-title">🎯 Key Objectives</h3>
+              <h3 className="obj-title">{t('gm.obj.title')}</h3>
               {[
                 { icon: '🐢', name: 'Turtle', timing: 'Spawns at 2:00', desc: 'Kill for gold advantage. Respawns every 3 minutes. Priority in early–mid game.' },
                 { icon: '👹', name: 'Lord', timing: 'Spawns at 8:00', desc: 'Kill to get a powerful allied unit that pushes lanes. Win condition in late game.' },
@@ -164,7 +166,7 @@ export default function GameMechanics() {
       {/* Gold & EXP */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Gold & <span>EXP System</span></h2>
+          <h2 className="section-title">{t('gm.gold.title.1')}<span>{t('gm.gold.title.2')}</span></h2>
           <div className="economy-grid">
             {[
               { icon: '💰', title: 'Minion Kills', desc: 'Each lane minion gives gold when last-hit. Missing last hits means losing gold. Practice last-hitting for better income.' },
@@ -187,8 +189,8 @@ export default function GameMechanics() {
       {/* Roles */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Hero <span>Roles</span></h2>
-          <p className="section-subtitle">Understanding roles is fundamental. Each team needs a balanced composition to succeed.</p>
+          <h2 className="section-title">{t('gm.roles.title.1')}<span>{t('gm.roles.title.2')}</span></h2>
+          <p className="section-subtitle">{t('gm.roles.subtitle')}</p>
           <div className="roles-tabs">
             {roles.map((r, i) => (
               <button
@@ -207,26 +209,26 @@ export default function GameMechanics() {
                 <div>
                   <h3 className="role-detail-name">{roles[activeRole].name}</h3>
                   <DifficultyStars count={roles[activeRole].difficulty} />
-                  <span className="role-difficulty-label"> Difficulty</span>
+                  <span className="role-difficulty-label">{t('gm.difficulty')}</span>
                 </div>
                 <span className={`badge badge-${roles[activeRole].color}`}>{roles[activeRole].name}</span>
               </div>
               <p className="role-detail-desc">{roles[activeRole].desc}</p>
               <div className="role-detail-grid">
                 <div className="role-duties">
-                  <h4>🎯 Core Duties</h4>
+                  <h4>{t('gm.duties')}</h4>
                   <ul>
                     {roles[activeRole].duties.map(d => <li key={d}>• {d}</li>)}
                   </ul>
                 </div>
                 <div className="role-heroes">
-                  <h4>🦸 Example Heroes</h4>
+                  <h4>{t('gm.heroes')}</h4>
                   <div className="role-heroes-list">
                     {roles[activeRole].heroes.map(h => <span key={h} className="hero-chip">{h}</span>)}
                   </div>
                 </div>
                 <div className="role-spell">
-                  <h4>⚡ Recommended Spell</h4>
+                  <h4>{t('gm.spell')}</h4>
                   <p>{roles[activeRole].spell}</p>
                 </div>
               </div>
@@ -238,8 +240,8 @@ export default function GameMechanics() {
       {/* Emblems */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Emblem <span>System</span></h2>
-          <p className="section-subtitle">Emblems provide stat bonuses and talent perks. Always equip the emblem matching your hero's role.</p>
+          <h2 className="section-title">{t('gm.emblems.title.1')}<span>{t('gm.emblems.title.2')}</span></h2>
+          <p className="section-subtitle">{t('gm.emblems.subtitle')}</p>
           <div className="grid-3">
             {emblems.map(({ name, icon, desc }) => (
               <div key={name} className="emblem-card card">
@@ -255,8 +257,8 @@ export default function GameMechanics() {
       {/* Battle Spells */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Battle <span>Spells</span></h2>
-          <p className="section-subtitle">Battle Spells are powerful abilities chosen before each match. Picking the right spell for your hero is critical.</p>
+          <h2 className="section-title">{t('gm.spells.title.1')}<span>{t('gm.spells.title.2')}</span></h2>
+          <p className="section-subtitle">{t('gm.spells.subtitle')}</p>
           <div className="spells-grid">
             {spells.map(({ icon, name, desc, when }) => (
               <div key={name} className="spell-card card">
@@ -266,7 +268,7 @@ export default function GameMechanics() {
                 </div>
                 <p className="spell-desc">{desc}</p>
                 <div className="spell-when">
-                  <span className="spell-when-label">Best for:</span> {when}
+                  <span className="spell-when-label">{t('gm.bestfor')}</span> {when}
                 </div>
               </div>
             ))}
@@ -277,8 +279,8 @@ export default function GameMechanics() {
       {/* Items Overview */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Items & <span>Builds</span></h2>
-          <p className="section-subtitle">Items are bought with gold during the match and dramatically increase your hero's power.</p>
+          <h2 className="section-title">{t('gm.items.title.1')}<span>{t('gm.items.title.2')}</span></h2>
+          <p className="section-subtitle">{t('gm.items.subtitle')}</p>
           <div className="items-grid">
             {[
               { cat: '⚔️ Physical', items: ['Endless Battle', 'Blade of Despair', 'War Axe', 'Malefic Roar', 'Windtalker'], tip: 'For fighters and physical marksmen. Focus on attack damage and pen.' },

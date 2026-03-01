@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Breadcrumb from '../components/Breadcrumb'
+import { useLanguage } from '../context/LanguageContext'
 import './About.css'
 
 const featuredCreators = [
@@ -9,14 +10,32 @@ const featuredCreators = [
 ]
 
 export default function About() {
+  const { t } = useLanguage()
+
+  const stats = [
+    { icon: '📚', label: t('about.stat.sections'), value: '9' },
+    { icon: '🦸', label: t('about.stat.heroes'), value: '30+' },
+    { icon: '📖', label: t('about.stat.glossary'), value: '45+' },
+    { icon: '⭐', label: t('about.stat.creators'), value: '15' },
+    { icon: '🌍', label: t('about.stat.mpl'), value: '6+' },
+    { icon: '💰', label: t('about.stat.cost'), value: t('about.stat.cost.value') },
+  ]
+
+  const howtoCards = [
+    { icon: '🆕', title: t('about.howto.1.title'), desc: t('about.howto.1.desc'), link: '/getting-started', cta: t('about.howto.1.cta') },
+    { icon: '📈', title: t('about.howto.2.title'), desc: t('about.howto.2.desc'), link: '/intermediate', cta: t('about.howto.2.cta') },
+    { icon: '🏆', title: t('about.howto.3.title'), desc: t('about.howto.3.desc'), link: '/advanced', cta: t('about.howto.3.cta') },
+    { icon: '❓', title: t('about.howto.4.title'), desc: t('about.howto.4.desc'), link: '/glossary', cta: t('about.howto.4.cta') },
+  ]
+
   return (
     <div className="about">
       <Breadcrumb />
       <div className="page-header">
         <div className="container">
-          <span className="page-tag">ℹ️ About</span>
-          <h1 className="section-title">About <span>MLBB Academy</span></h1>
-          <p className="section-subtitle">A fan-made educational resource dedicated to helping players of all skill levels master Mobile Legends: Bang Bang.</p>
+          <span className="page-tag">{t('about.tag')}</span>
+          <h1 className="section-title">{t('about.title.1')}<span>{t('about.title.2')}</span></h1>
+          <p className="section-subtitle">{t('about.subtitle')}</p>
         </div>
       </div>
 
@@ -25,21 +44,14 @@ export default function About() {
         <div className="container">
           <div className="about-intro-grid">
             <div className="about-intro-text">
-              <h2 className="section-title">Our <span>Mission</span></h2>
-              <p>MLBB Academy was created to be the most comprehensive, free, and accessible learning resource for Mobile Legends: Bang Bang players worldwide.</p>
-              <p>Whether you just downloaded the game or you're pushing toward Mythical Glory, this site provides structured guides, hero-specific tips, and curated pro resources to help you improve at every stage of your journey.</p>
-              <p>We believe great MLBB resources should be free, well-organized, and genuinely helpful — no pay-walls, no fluff, just practical knowledge you can apply in your next match.</p>
+              <h2 className="section-title">{t('about.mission.title.1')}<span>{t('about.mission.title.2')}</span></h2>
+              <p>{t('about.mission.p1')}</p>
+              <p>{t('about.mission.p2')}</p>
+              <p>{t('about.mission.p3')}</p>
             </div>
             <div className="about-stats-card card">
-              <h3>📊 Site Overview</h3>
-              {[
-                { icon: '📚', label: 'Course Sections', value: '9' },
-                { icon: '🦸', label: 'Hero Guides', value: '30+' },
-                { icon: '📖', label: 'Glossary Terms', value: '45+' },
-                { icon: '⭐', label: 'Featured Creators', value: '15' },
-                { icon: '🌍', label: 'MPL Regions Covered', value: '6+' },
-                { icon: '💰', label: 'Cost to Use', value: 'Free Forever' },
-              ].map(({ icon, label, value }) => (
+              <h3>{t('about.stats.title')}</h3>
+              {stats.map(({ icon, label, value }) => (
                 <div key={label} className="about-stat-row">
                   <span className="about-stat-icon">{icon}</span>
                   <span className="about-stat-label">{label}</span>
@@ -57,19 +69,11 @@ export default function About() {
           <div className="disclaimer-box">
             <div className="disclaimer-icon">⚠️</div>
             <div className="disclaimer-content">
-              <h2 className="disclaimer-title">Important Disclaimer</h2>
-              <p>
-                <strong>MLBB Academy is a fan-made, unofficial educational resource.</strong> This website is not affiliated with, endorsed by, or connected to Moonton or Mobile Legends: Bang Bang in any official capacity.
-              </p>
-              <p>
-                All game-related content, including hero names, abilities, items, and game mechanics, are the intellectual property of Moonton. This website exists purely for educational and community purposes.
-              </p>
-              <p>
-                Hero data, meta information, and strategies may become outdated as the game receives regular patches and updates. Always verify current meta information with up-to-date patch notes.
-              </p>
-              <p>
-                Links to external content creators and websites are provided for informational purposes. We are not responsible for content on external sites.
-              </p>
+              <h2 className="disclaimer-title">{t('about.disclaimer.title')}</h2>
+              <p>{t('about.disclaimer.p1')}</p>
+              <p>{t('about.disclaimer.p2')}</p>
+              <p>{t('about.disclaimer.p3')}</p>
+              <p>{t('about.disclaimer.p4')}</p>
             </div>
           </div>
         </div>
@@ -78,8 +82,8 @@ export default function About() {
       {/* Credits */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Community <span>Credits</span></h2>
-          <p className="section-subtitle">This site's strategy content was influenced by the incredible MLBB community and its dedicated content creators. A special thanks to:</p>
+          <h2 className="section-title">{t('about.credits.title.1')}<span>{t('about.credits.title.2')}</span></h2>
+          <p className="section-subtitle">{t('about.credits.subtitle')}</p>
 
           <div className="credits-grid">
             {featuredCreators.map(creator => (
@@ -91,7 +95,9 @@ export default function About() {
           </div>
 
           <p className="credits-note">
-            These creators have contributed immensely to the MLBB community through educational content, guides, and entertainment. Visit the <Link to="/pro-resources">Pro Resources</Link> page to find their channels.
+            {t('about.credits.note').split('{link}')[0]}
+            <Link to="/pro-resources">{t('about.credits.link')}</Link>
+            {t('about.credits.note').split('{link}')[1]}
           </p>
         </div>
       </section>
@@ -99,14 +105,9 @@ export default function About() {
       {/* How to Use */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">How to Use <span>This Guide</span></h2>
+          <h2 className="section-title">{t('about.howto.title.1')}<span>{t('about.howto.title.2')}</span></h2>
           <div className="howto-grid">
-            {[
-              { icon: '🆕', title: 'Complete Beginners', desc: 'Start with Getting Started → Game Mechanics → Hero Guides. Master one hero before expanding your pool.', link: '/getting-started', cta: 'Begin Here' },
-              { icon: '📈', title: 'Casual to Ranked', desc: 'Read Intermediate strategies. Focus on map awareness, farming, and rotation before pushing ranked.', link: '/intermediate', cta: 'Level Up' },
-              { icon: '🏆', title: 'Pushing to Mythic', desc: 'Study Advanced macro/micro, counter-jungling, and the mental game section.', link: '/advanced', cta: 'Go Advanced' },
-              { icon: '❓', title: 'Learn the Language', desc: 'Use the Glossary any time you encounter an unfamiliar term or abbreviation.', link: '/glossary', cta: 'Open Glossary' },
-            ].map(({ icon, title, desc, link, cta }) => (
+            {howtoCards.map(({ icon, title, desc, link, cta }) => (
               <div key={title} className="howto-card card">
                 <span className="howto-icon">{icon}</span>
                 <h4 className="howto-title">{title}</h4>
@@ -123,15 +124,15 @@ export default function About() {
         <div className="container">
           <div className="contribute-box card">
             <div className="contribute-content">
-              <h2 className="contribute-title">🤝 Want to Contribute?</h2>
-              <p>MLBB Academy thrives on community knowledge. If you have suggestions, corrections, or additional content ideas:</p>
+              <h2 className="contribute-title">{t('about.contribute.title')}</h2>
+              <p>{t('about.contribute.desc')}</p>
               <ul className="contribute-list">
-                <li>📧 Spotted an error? We'd love to know so we can fix it.</li>
-                <li>🦸 Want a specific hero guide added or expanded? Let us know.</li>
-                <li>💡 Have a strategy tip that's not here? Share your knowledge.</li>
-                <li>📹 Know a great creator we should feature? Recommend them.</li>
+                <li>{t('about.contribute.1')}</li>
+                <li>{t('about.contribute.2')}</li>
+                <li>{t('about.contribute.3')}</li>
+                <li>{t('about.contribute.4')}</li>
               </ul>
-              <p className="contribute-note">This is a community resource — your feedback makes it better for everyone.</p>
+              <p className="contribute-note">{t('about.contribute.note')}</p>
             </div>
             <div className="contribute-cta">
               <Link to="/glossary" className="btn-secondary">Browse Glossary</Link>

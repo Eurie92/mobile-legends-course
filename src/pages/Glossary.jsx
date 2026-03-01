@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
+import { useLanguage } from '../context/LanguageContext'
 import './Glossary.css'
 
 const terms = [
@@ -51,6 +52,7 @@ const terms = [
 ]
 
 export default function Glossary() {
+  const { t } = useLanguage()
   const [search, setSearch] = useState('')
 
   const filtered = terms.filter(({ term, full, def }) => {
@@ -63,9 +65,9 @@ export default function Glossary() {
       <Breadcrumb />
       <div className="page-header">
         <div className="container">
-          <span className="page-tag">📖 Reference</span>
-          <h1 className="section-title">MLBB <span>Glossary</span></h1>
-          <p className="section-subtitle">A complete reference of MLBB terminology, abbreviations, and concepts. Search any term to find its meaning.</p>
+          <span className="page-tag">{t('glossary.tag')}</span>
+          <h1 className="section-title">{t('glossary.title.1')} <span>{t('glossary.title.2')}</span></h1>
+          <p className="section-subtitle">{t('glossary.subtitle')}</p>
         </div>
       </div>
 
@@ -77,7 +79,7 @@ export default function Glossary() {
             <input
               type="text"
               className="glossary-search"
-              placeholder="Search terms, abbreviations, or descriptions..."
+              placeholder={t('glossary.search.placeholder')}
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
@@ -87,12 +89,12 @@ export default function Glossary() {
           </div>
 
           <p className="glossary-count">
-            {filtered.length} term{filtered.length !== 1 ? 's' : ''} {search ? `matching "${search}"` : 'total'}
+            {filtered.length} term{filtered.length !== 1 ? 's' : ''} {search ? `${t('glossary.matching')} "${search}"` : t('glossary.total')}
           </p>
 
           {filtered.length === 0 ? (
             <div className="glossary-empty">
-              <p>😕 No terms found matching "{search}"</p>
+              <p>😕 {t('glossary.empty')} "{search}"</p>
             </div>
           ) : (
             <div className="glossary-list">

@@ -1,4 +1,5 @@
 import Breadcrumb from '../components/Breadcrumb'
+import { useLanguage } from '../context/LanguageContext'
 import './ProResources.css'
 
 const creators = [
@@ -123,10 +124,10 @@ const creators = [
     name: 'Bethings',
     platform: 'YouTube/Facebook',
     icon: '▶️',
-    specialty: 'Filipino educational gameplay and hero tutorials',
+    specialty: 'Filipino educational gameplay, hero tutorials, ranked tips, and meta analysis',
     url: 'https://www.youtube.com/@Bethings',
-    desc: 'A popular Filipino MLBB creator known for detailed hero tutorials, gameplay analysis, and practical tips that help players improve their ranked performance. Great resource for Tagalog-speaking players.',
-    tags: ['Filipino', 'Tutorials', 'Educational'],
+    desc: 'Bethings is one of the most popular Filipino MLBB educational creators, known for in-depth hero tutorials, step-by-step gameplay analysis, and practical ranked climbing tips in Tagalog. Bethings breaks down meta picks, optimal builds, and rotation strategies in a way that is easy for Filipino players to understand and apply. A must-watch for Tagalog-speaking players who want to improve their gameplay and climb the ranked ladder consistently.',
+    tags: ['Filipino', 'Tutorials', 'Educational', 'Meta', 'Ranked'],
   },
   {
     name: 'Fuego',
@@ -149,22 +150,23 @@ const mplLeagues = [
 ]
 
 export default function ProResources() {
+  const { t } = useLanguage()
   return (
     <div className="pro-resources">
       <Breadcrumb />
       <div className="page-header">
         <div className="container">
-          <span className="page-tag">⭐ Pro Level</span>
-          <h1 className="section-title">Pro <span>Resources</span></h1>
-          <p className="section-subtitle">The best content creators, official esports channels, and professional resources to accelerate your MLBB journey.</p>
+          <span className="page-tag">{t('pro.tag')}</span>
+          <h1 className="section-title">{t('pro.title.1')}<span>{t('pro.title.2')}</span></h1>
+          <p className="section-subtitle">{t('pro.subtitle')}</p>
         </div>
       </div>
 
       {/* Content Creators */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Top Content <span>Creators</span></h2>
-          <p className="section-subtitle">These creators provide the best educational and entertainment content in the MLBB community.</p>
+          <h2 className="section-title">{t('pro.creators.title.1')}<span>{t('pro.creators.title.2')}</span></h2>
+          <p className="section-subtitle">{t('pro.creators.subtitle')}</p>
           <div className="creators-grid">
             {creators.map(({ name, platform, icon, specialty, url, desc, tags }) => (
               <div key={name} className="creator-card card">
@@ -182,7 +184,7 @@ export default function ProResources() {
                 <p className="creator-specialty">🎯 {specialty}</p>
                 <p className="creator-desc">{desc}</p>
                 <div className="creator-tags">
-                  {tags.map(t => <span key={t} className="creator-tag">{t}</span>)}
+                  {tags.map(tag => <span key={tag} className="creator-tag">{tag}</span>)}
                 </div>
                 <a
                   href={url}
@@ -190,7 +192,7 @@ export default function ProResources() {
                   rel="noopener noreferrer"
                   className="creator-link"
                 >
-                  Visit Channel →
+                  {t('pro.visit')}
                 </a>
               </div>
             ))}
@@ -201,8 +203,8 @@ export default function ProResources() {
       {/* MPL Esports */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Official MPL <span>Esports Leagues</span></h2>
-          <p className="section-subtitle">The Mobile Legends Professional League (MPL) is the premier competitive circuit. Watch to learn from the best players in the world.</p>
+          <h2 className="section-title">{t('pro.mpl.title.1')}<span>{t('pro.mpl.title.2')}</span></h2>
+          <p className="section-subtitle">{t('pro.mpl.subtitle')}</p>
           <div className="mpl-grid">
             {mplLeagues.map(({ region, short, flag, url, note }) => (
               <a
@@ -218,7 +220,7 @@ export default function ProResources() {
                   <p className="mpl-full">{region}</p>
                 </div>
                 <p className="mpl-note">{note}</p>
-                <span className="mpl-watch">Watch →</span>
+                <span className="mpl-watch">{t('pro.mpl.watch')}</span>
               </a>
             ))}
           </div>
@@ -228,10 +230,10 @@ export default function ProResources() {
       {/* M-Series Championship */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">M-Series <span>World Championship</span></h2>
+          <h2 className="section-title">{t('pro.mseries.title.1')}<span>{t('pro.mseries.title.2')}</span></h2>
           <div className="mseries-content">
             <div className="mseries-info">
-              <p className="pro-text">The M-Series is MLBB's annual World Championship where the best MPL teams from all regions compete for the title of World Champion. It is the grandest stage in mobile MOBA esports.</p>
+              <p className="pro-text">{t('pro.mseries.desc')}</p>
               <div className="mseries-stats">
                 {[
                   { label: 'Format', value: 'Bo3/Bo5 Double Elimination' },
@@ -247,7 +249,7 @@ export default function ProResources() {
               </div>
             </div>
             <div className="mseries-champions card">
-              <h3>🏆 Past Champions</h3>
+              <h3>{t('pro.mseries.champions')}</h3>
               {[
                 { edition: 'M1 (2019)', team: 'Bigetron Alpha', region: 'Indonesia 🇮🇩' },
                 { edition: 'M2 (2021)', team: 'Bren Esports', region: 'Philippines 🇵🇭' },
@@ -270,7 +272,7 @@ export default function ProResources() {
       {/* Why Watch Pro Play */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Why Watch <span>Pro Play?</span></h2>
+          <h2 className="section-title">{t('pro.why.title.1')}<span>{t('pro.why.title.2')}</span></h2>
           <div className="grid-3">
             {[
               { icon: '📚', title: 'Learn Rotations', desc: 'Professional teams execute near-perfect rotations. Watch to internalize how and when to move across the map.' },
