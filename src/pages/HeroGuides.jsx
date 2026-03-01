@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
+import { useLanguage } from '../context/LanguageContext'
 import './HeroGuides.css'
 
 const heroes = [
@@ -66,6 +67,7 @@ function DifficultyStars({ count }) {
 }
 
 export default function HeroGuides() {
+  const { t } = useLanguage()
   const [filter, setFilter] = useState('All')
   const [expanded, setExpanded] = useState(null)
 
@@ -76,9 +78,9 @@ export default function HeroGuides() {
       <Breadcrumb />
       <div className="page-header">
         <div className="container">
-          <span className="page-tag">🦸 Heroes</span>
-          <h1 className="section-title">Hero <span>Guides</span></h1>
-          <p className="section-subtitle">Browse guides for 30 heroes across all 6 roles. Filter by role to find your main.</p>
+          <span className="page-tag">{t('hg.tag')}</span>
+          <h1 className="section-title">{t('hg.title.1')}<span>{t('hg.title.2')}</span></h1>
+          <p className="section-subtitle">{t('hg.subtitle')}</p>
         </div>
       </div>
 
@@ -96,7 +98,7 @@ export default function HeroGuides() {
               </button>
             ))}
           </div>
-          <p className="filter-count">{filtered.length} hero{filtered.length !== 1 ? 'es' : ''} shown</p>
+          <p className="filter-count">{filtered.length}{filtered.length !== 1 ? t('hg.heroes') : t('hg.hero')}{t('hg.shown')}</p>
 
           <div className="heroes-grid">
             {filtered.map((hero) => (
@@ -125,17 +127,17 @@ export default function HeroGuides() {
                   className="hero-expand-btn"
                   onClick={() => setExpanded(expanded === hero.name ? null : hero.name)}
                 >
-                  {expanded === hero.name ? '▲ Less' : '▼ Tips'}
+                  {expanded === hero.name ? t('hg.less') : t('hg.more')}
                 </button>
 
                 {expanded === hero.name && (
                   <div className="hero-expanded">
-                    <h4>💡 Key Tips</h4>
+                    <h4>{t('hg.tips')}</h4>
                     <ul>
-                      {hero.tips.map(t => <li key={t}>• {t}</li>)}
+                      {hero.tips.map(tip => <li key={tip}>• {tip}</li>)}
                     </ul>
                     <div className="hero-counter">
-                      <span className="counter-label">🔄 Weak vs:</span> {hero.counter}
+                      <span className="counter-label">{t('hg.weak')}</span> {hero.counter}
                     </div>
                   </div>
                 )}
@@ -148,8 +150,8 @@ export default function HeroGuides() {
       {/* Tier List */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Current <span>Meta Tier List</span></h2>
-          <p className="section-subtitle">General tier guide for ranked play. Meta shifts each patch — always check recent patch notes.</p>
+          <h2 className="section-title">{t('hg.tier.title.1')}<span>{t('hg.tier.title.2')}</span></h2>
+          <p className="section-subtitle">{t('hg.tier.subtitle')}</p>
           <div className="tier-list">
             {Object.entries(tierList).map(([tier, tierHeroes]) => (
               <div key={tier} className={`tier-row tier-${tier.toLowerCase()}`}>
@@ -166,10 +168,10 @@ export default function HeroGuides() {
       {/* Synergy & Counter Tips */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Synergy & <span>Counter Tips</span></h2>
+          <h2 className="section-title">{t('hg.synergy.title.1')}<span>{t('hg.synergy.title.2')}</span></h2>
           <div className="grid-2">
             <div className="synergy-card card">
-              <h3>✅ Strong Synergies</h3>
+              <h3>{t('hg.synergy.strong')}</h3>
               <ul>
                 {[
                   'Angela + any carry: Angela ult enables any carry hero to rampage.',
@@ -181,7 +183,7 @@ export default function HeroGuides() {
               </ul>
             </div>
             <div className="counter-card card">
-              <h3>❌ Common Counters</h3>
+              <h3>{t('hg.synergy.counter')}</h3>
               <ul>
                 {[
                   'Necklace of Durance counters all healers (Estes, Angela, Rafaela).',
