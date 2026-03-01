@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb'
+import { useLanguage } from '../context/LanguageContext'
 import './Intermediate.css'
 
 const quizData = [
@@ -24,6 +25,7 @@ const quizData = [
 ]
 
 function Quiz() {
+  const { t } = useLanguage()
   const [answers, setAnswers] = useState({})
   const [revealed, setRevealed] = useState({})
   const score = Object.entries(revealed).filter(([qi]) => answers[qi] === quizData[qi].answer).length
@@ -33,7 +35,7 @@ function Quiz() {
 
   return (
     <div className="quiz-container">
-      <h3 className="quiz-title">🧠 Intermediate Knowledge Check</h3>
+      <h3 className="quiz-title">{t('int.quiz.title')}</h3>
       {quizData.map((q, qi) => (
         <div key={qi} className="quiz-question">
           <p className="quiz-q-text"><strong>Q{qi + 1}:</strong> {q.q}</p>
@@ -63,24 +65,25 @@ function Quiz() {
 }
 
 export default function Intermediate() {
+  const { t } = useLanguage()
   return (
     <div className="intermediate">
       <Breadcrumb />
       <div className="page-header">
         <div className="container">
-          <span className="page-tag">📈 Intermediate</span>
-          <h1 className="section-title">Intermediate <span>Strategies</span></h1>
-          <p className="section-subtitle">Bridge the gap from casual player to consistent ranked performer with these core intermediate concepts.</p>
+          <span className="page-tag">{t('int.tag')}</span>
+          <h1 className="section-title">{t('int.title.1')}<span>{t('int.title.2')}</span></h1>
+          <p className="section-subtitle">{t('int.subtitle')}</p>
         </div>
       </div>
 
       {/* Last Hitting & Farming */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Last Hitting & <span>Farming</span></h2>
+          <h2 className="section-title">{t('int.farming.title.1')}<span>{t('int.farming.title.2')}</span></h2>
           <div className="int-grid">
             <div>
-              <p className="int-text">Last hitting means landing the killing blow on a lane minion to secure the full gold reward. Missing last hits — even by 1 attack — means lost gold that compounds over the game.</p>
+              <p className="int-text">{t('int.farming.desc')}</p>
               <div className="int-tips-list">
                 {[
                   '🎯 Aim to get 7–8 out of every 10 minion last hits in lane.',
@@ -88,11 +91,11 @@ export default function Intermediate() {
                   '🌿 Clear jungle camps when your lane is pushed out or you have downtime.',
                   '💰 A gold-efficient player has better items and wins more fights.',
                   '🗺️ Always farm something — never stand still doing nothing.',
-                ].map((t, i) => <div key={i} className="int-tip-row">{t}</div>)}
+                ].map((tip, i) => <div key={i} className="int-tip-row">{tip}</div>)}
               </div>
             </div>
             <div className="int-stat-card card">
-              <h3>📊 Farming Goals</h3>
+              <h3>{t('int.farming.stats')}</h3>
               {[
                 { label: 'Early (0–5 min)', value: '30+ CS' },
                 { label: 'Mid (5–10 min)', value: '60+ CS' },
@@ -113,7 +116,7 @@ export default function Intermediate() {
       {/* Map Awareness */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Map Awareness & <span>Minimap</span></h2>
+          <h2 className="section-title">{t('int.map.title.1')}<span>{t('int.map.title.2')}</span></h2>
           <div className="awareness-grid">
             {[
               { icon: '👁️', title: 'Check Minimap Every 3–5 Seconds', desc: 'Develop the habit of glancing at the minimap regularly. Know where enemies are before you push.' },
@@ -136,7 +139,7 @@ export default function Intermediate() {
       {/* Rotation Strategies */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Rotation <span>Strategies</span></h2>
+          <h2 className="section-title">{t('int.rotation.title.1')}<span>{t('int.rotation.title.2')}</span></h2>
           <div className="rotation-grid">
             {[
               { role: 'Mid Laner', icon: '🔮', rotations: ['After pushing mid wave → rotate to nearest gank opportunity', 'Ideal gank timing: when enemy lane is overextended', 'Return to mid after rotation to resume farming', 'Use high-damage combos to quickly eliminate targets'] },
@@ -160,7 +163,7 @@ export default function Intermediate() {
       {/* Objectives */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Objective <span>Prioritization</span></h2>
+          <h2 className="section-title">{t('int.obj.title.1')}<span>{t('int.obj.title.2')}</span></h2>
           <div className="obj-priority-grid">
             {[
               { phase: '🌅 Early (0–4 min)', obj: 'First Turtle', rule: 'Contest Turtle at 2:00. Most important early objective — gives team gold advantage. Build early lead from it.' },
@@ -181,8 +184,8 @@ export default function Intermediate() {
       {/* Team Composition */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Team <span>Composition</span></h2>
-          <p className="section-subtitle">A balanced team composition is critical for success. At the draft/selection screen, build a team with multiple roles covered.</p>
+          <h2 className="section-title">{t('int.comp.title.1')}<span>{t('int.comp.title.2')}</span></h2>
+          <p className="section-subtitle">{t('int.comp.subtitle')}</p>
           <div className="comp-types">
             {[
               { type: 'Poke Comp', desc: 'Long-range heroes that whittle down enemies before engaging.', heroes: 'Pharsa, Clint, Vale, Brody, Franco', strength: 'Forces bad engages from enemies.' },
@@ -204,10 +207,10 @@ export default function Intermediate() {
       {/* Engage vs Disengage */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Engage vs <span>Disengage</span></h2>
+          <h2 className="section-title">{t('int.engage.title.1')}<span>{t('int.engage.title.2')}</span></h2>
           <div className="grid-2">
             <div className="engage-card card">
-              <h3>⚔️ When to Engage</h3>
+              <h3>{t('int.engage.when')}</h3>
               <ul>
                 {[
                   'You have numbers advantage (4v3, 5v4)',
@@ -215,11 +218,11 @@ export default function Intermediate() {
                   'Enemy carry/mage is dead or low HP',
                   'Turtle or Lord is available to take after winning',
                   'Your team has full ultimates and theirs are on cooldown',
-                ].map((t, i) => <li key={i} className="engage-item">✅ {t}</li>)}
+                ].map((item, i) => <li key={i} className="engage-item">✅ {item}</li>)}
               </ul>
             </div>
             <div className="disengage-card card">
-              <h3>🛡️ When to Disengage</h3>
+              <h3>{t('int.disengage.when')}</h3>
               <ul>
                 {[
                   'You are outnumbered after losing a fight',
@@ -227,7 +230,7 @@ export default function Intermediate() {
                   'You are under-farmed or behind in gold',
                   'You are defending your own base/turret',
                   'Retreat and rotate to a safer objective instead',
-                ].map((t, i) => <li key={i} className="disengage-item">🔴 {t}</li>)}
+                ].map((item, i) => <li key={i} className="disengage-item">🔴 {item}</li>)}
               </ul>
             </div>
           </div>
