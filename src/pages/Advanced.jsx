@@ -1,4 +1,5 @@
 import Breadcrumb from '../components/Breadcrumb'
+import { useLanguage } from '../context/LanguageContext'
 import './Advanced.css'
 
 const rankTiers = [
@@ -73,22 +74,23 @@ const macroTopics = [
 ]
 
 export default function Advanced() {
+  const { t } = useLanguage()
   return (
     <div className="advanced">
       <Breadcrumb />
       <div className="page-header">
         <div className="container">
-          <span className="page-tag">🏆 Advanced</span>
-          <h1 className="section-title">Advanced <span>Strategies</span></h1>
-          <p className="section-subtitle">Elite-level macro and micro techniques for players aiming for Mythical Glory and beyond.</p>
+          <span className="page-tag">{t('adv.tag')}</span>
+          <h1 className="section-title">{t('adv.title.1')}<span>{t('adv.title.2')}</span></h1>
+          <p className="section-subtitle">{t('adv.subtitle')}</p>
         </div>
       </div>
 
       {/* Advanced Macro */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Advanced <span>Macro Play</span></h2>
-          <p className="section-subtitle">Macro refers to large-scale game decisions — map movement, objectives, and pressure.</p>
+          <h2 className="section-title">{t('adv.macro.title.1')}<span>{t('adv.macro.title.2')}</span></h2>
+          <p className="section-subtitle">{t('adv.macro.subtitle')}</p>
           <div className="macro-grid">
             {macroTopics.map(({ title, icon, content }) => (
               <div key={title} className="macro-card card">
@@ -108,8 +110,8 @@ export default function Advanced() {
       {/* Advanced Micro */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Advanced <span>Micro Techniques</span></h2>
-          <p className="section-subtitle">Micro refers to individual mechanical skill — how precisely you control your hero in fights.</p>
+          <h2 className="section-title">{t('adv.micro.title.1')}<span>{t('adv.micro.title.2')}</span></h2>
+          <p className="section-subtitle">{t('adv.micro.subtitle')}</p>
           <div className="micro-grid">
             {microTechniques.map(({ tech, icon, desc, practice }) => (
               <div key={tech} className="micro-card card">
@@ -119,7 +121,7 @@ export default function Advanced() {
                 </div>
                 <p className="micro-desc">{desc}</p>
                 <div className="micro-practice">
-                  <span className="practice-label">🎮 Practice:</span> {practice}
+                  <span className="practice-label">{t('adv.micro.practice')}</span> {practice}
                 </div>
               </div>
             ))}
@@ -130,10 +132,10 @@ export default function Advanced() {
       {/* Counter Jungling */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Counter <span>Jungling</span></h2>
+          <h2 className="section-title">{t('adv.cj.title.1')}<span>{t('adv.cj.title.2')}</span></h2>
           <div className="cj-grid">
             <div>
-              <p className="adv-text">Counter-jungling means invading the enemy jungle to steal their camps, deny their gold/EXP, and create an early advantage. It is high risk, high reward.</p>
+              <p className="adv-text">{t('adv.cj.desc')}</p>
               <div className="cj-tips">
                 {[
                   { icon: '📍', tip: 'Invade enemy jungle only when their jungler is visible on the map.' },
@@ -150,7 +152,7 @@ export default function Advanced() {
               </div>
             </div>
             <div className="cj-timing card">
-              <h3>⏰ Key Jungle Timers</h3>
+              <h3>{t('adv.cj.timers')}</h3>
               {[
                 { camp: 'Turtle', timer: '2:00 / Respawn 3 min' },
                 { camp: 'Lord', timer: '8:00 / Respawn 3 min' },
@@ -171,8 +173,8 @@ export default function Advanced() {
       {/* Rank Climbing Guide */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Ranked Climbing <span>Guide</span></h2>
-          <p className="section-subtitle">Every rank tier requires different focus areas. Here's what matters most at each stage.</p>
+          <h2 className="section-title">{t('adv.rank.title.1')}<span>{t('adv.rank.title.2')}</span></h2>
+          <p className="section-subtitle">{t('adv.rank.subtitle')}</p>
           <div className="rank-timeline">
             {rankTiers.map(({ rank, icon, color, tips }) => (
               <div key={rank} className="rank-item">
@@ -190,7 +192,7 @@ export default function Advanced() {
       {/* Mental Game */}
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Mental Game & <span>Tilt Management</span></h2>
+          <h2 className="section-title">{t('adv.mental.title.1')}<span>{t('adv.mental.title.2')}</span></h2>
           <div className="mental-grid">
             {[
               { icon: '🧘', title: 'Recognize Tilt Early', desc: 'Tilt is when frustration causes you to play worse. Signs: rushing in alone, spamming, blaming teammates. Recognize it before it spirals.' },
@@ -213,9 +215,9 @@ export default function Advanced() {
       {/* Patch Analysis */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="section-title">Meta & <span>Patch Analysis</span></h2>
+          <h2 className="section-title">{t('adv.patch.title.1')}<span>{t('adv.patch.title.2')}</span></h2>
           <div className="patch-content">
-            <p className="adv-text">MLBB releases patches every 2–4 weeks. Each patch can dramatically shift the meta. Adapting to patches separates stagnant players from climbers.</p>
+            <p className="adv-text">{t('adv.patch.desc')}</p>
             <div className="patch-steps">
               {[
                 { step: '1', title: 'Read Patch Notes', desc: 'Check the official MLBB patch notes immediately after each update. Focus on changes to your main heroes and commonly played heroes.' },
