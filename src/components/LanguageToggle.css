@@ -1,0 +1,34 @@
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.lang-toggle:hover {
+  border-color: var(--accent-gold);
+  background: rgba(255, 215, 0, 0.12);
+}
+
+.lang-option {
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.lang-option.active {
+  color: var(--accent-gold);
+}
+
+.lang-sep {
+  color: rgba(255, 255, 255, 0.2);
+  margin: 0 1px;
+}

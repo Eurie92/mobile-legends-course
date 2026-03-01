@@ -95,6 +95,16 @@
   z-index: 1001;
 }
 
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-actions .lang-toggle {
+  display: flex;
+}
+
 .hamburger span {
   display: block;
   width: 24px;

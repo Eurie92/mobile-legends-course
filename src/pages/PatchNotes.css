@@ -1,0 +1,254 @@
+.patch-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* Patch Sources */
+.patch-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.patch-source-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.patch-source-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.patch-source-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.patch-source-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.patch-source-type {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.patch-type-official {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.patch-type-creator {
+  background: rgba(26, 159, 255, 0.1);
+  color: var(--accent-blue);
+  border: 1px solid rgba(26, 159, 255, 0.2);
+}
+
+.patch-type-in-game {
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.patch-source-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.patch-source-link {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: var(--accent-gold);
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+
+.patch-source-link:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* Checklist */
+.patch-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.patch-checklist-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.patch-checklist-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.patch-checklist-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: var(--gradient-gold);
+  color: #0a0e1a;
+  border-radius: 50%;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.patch-checklist-icon {
+  font-size: 1.3rem;
+}
+
+.patch-checklist-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.patch-checklist-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Patch Terms */
+.patch-terms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.patch-term-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.patch-term-icon {
+  font-size: 1.3rem;
+}
+
+.patch-term-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.patch-term-meaning {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Patch Cycle */
+.patch-cycle-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.patch-cycle-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.patch-cycle-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+.pc-label {
+  color: var(--text-secondary);
+}
+
+.pc-value {
+  color: var(--accent-gold);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.patch-tips-box {
+  padding: 24px;
+}
+
+.patch-tips-box h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 16px;
+}
+
+.patch-tips-list {
+  list-style: none;
+}
+
+.patch-tips-list li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  line-height: 1.5;
+}
+
+.patch-tips-list li:last-child {
+  border-bottom: none;
+}
+
+.patch-tips-list li::before {
+  content: '• ';
+  color: var(--accent-gold);
+}
+
+@media (max-width: 768px) {
+  .patch-cycle-content {
+    grid-template-columns: 1fr;
+  }
+
+  .patch-sources-grid,
+  .patch-checklist-grid {
+    grid-template-columns: 1fr;
+  }
+}

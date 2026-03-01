@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 import ProgressTracker from '../components/ProgressTracker'
 import './Home.css'
 
@@ -79,6 +80,8 @@ const tips = [
 ]
 
 export default function Home() {
+  const { t } = useLanguage()
+
   return (
     <div className="home">
       {/* Hero Section */}
@@ -89,26 +92,26 @@ export default function Home() {
         </div>
         <div className="container hero-content">
           <div className="hero-badge">
-            <span>⚔️</span> The Complete MLBB Learning Platform
+            <span>⚔️</span> {t('home.badge')}
           </div>
           <h1 className="hero-title">
-            Master the <span>Land of Dawn</span>
+            {t('home.title.1')}<span>{t('home.title.2')}</span>
           </h1>
           <p className="hero-subtitle">
-            From your very first match to reaching Mythical Glory — your complete, structured guide to Mobile Legends: Bang Bang.
+            {t('home.subtitle')}
           </p>
           <div className="hero-actions">
-            <Link to="/getting-started" className="btn-primary">Start Learning →</Link>
-            <Link to="/hero-guides" className="btn-secondary">Browse Hero Guides</Link>
+            <Link to="/getting-started" className="btn-primary">{t('home.cta.start')}</Link>
+            <Link to="/hero-guides" className="btn-secondary">{t('home.cta.heroes')}</Link>
           </div>
           <div className="hero-stats">
-            <div className="hero-stat"><strong>30+</strong><span>Hero Guides</span></div>
+            <div className="hero-stat"><strong>30+</strong><span>{t('home.stat.heroes')}</span></div>
             <div className="hero-stat-sep" />
-            <div className="hero-stat"><strong>9</strong><span>Course Sections</span></div>
+            <div className="hero-stat"><strong>9</strong><span>{t('home.stat.sections')}</span></div>
             <div className="hero-stat-sep" />
-            <div className="hero-stat"><strong>13+</strong><span>Pro Creators</span></div>
+            <div className="hero-stat"><strong>15+</strong><span>{t('home.stat.creators')}</span></div>
             <div className="hero-stat-sep" />
-            <div className="hero-stat"><strong>Free</strong><span>Forever</span></div>
+            <div className="hero-stat"><strong>Free</strong><span>{t('home.stat.free')}</span></div>
           </div>
         </div>
       </section>
@@ -117,8 +120,8 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Where Do You Want to <span>Begin?</span></h2>
-            <p className="section-subtitle">Six structured modules covering everything from basics to professional-level strategies.</p>
+            <h2 className="section-title">{t('home.where')}<span>{t('home.where.span')}</span></h2>
+            <p className="section-subtitle">{t('home.where.sub')}</p>
           </div>
           <div className="quick-nav-grid">
             {quickNavCards.map(({ to, icon, title, desc, badge, color }) => (
@@ -140,8 +143,8 @@ export default function Home() {
       <section className="section section-alt">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Why Use <span>MLBB Academy?</span></h2>
-            <p className="section-subtitle">Everything you need to improve, in one place — no fluff, just results.</p>
+            <h2 className="section-title">{t('home.why')}<span>{t('home.why.span')}</span></h2>
+            <p className="section-subtitle">{t('home.why.sub')}</p>
           </div>
           <div className="grid-3">
             {benefits.map(({ icon, title, desc }) => (
@@ -159,8 +162,8 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Track Your <span>Progress</span></h2>
-            <p className="section-subtitle">Mark sections as complete — your progress is saved locally in your browser.</p>
+            <h2 className="section-title">{t('home.track')}<span>{t('home.track.span')}</span></h2>
+            <p className="section-subtitle">{t('home.track.sub')}</p>
           </div>
           <ProgressTracker />
         </div>
@@ -170,8 +173,8 @@ export default function Home() {
       <section className="section section-alt">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Quick <span>Tips</span></h2>
-            <p className="section-subtitle">Fast, actionable tips to instantly improve your gameplay.</p>
+            <h2 className="section-title">{t('home.tips')}<span>{t('home.tips.span')}</span></h2>
+            <p className="section-subtitle">{t('home.tips.sub')}</p>
           </div>
           <div className="tips-grid">
             {tips.map(({ icon, tip, tag }) => (
@@ -185,7 +188,7 @@ export default function Home() {
             ))}
           </div>
           <div className="tips-cta">
-            <Link to="/intermediate" className="btn-primary">View All Strategies →</Link>
+            <Link to="/intermediate" className="btn-primary">{t('home.tips.cta')}</Link>
           </div>
         </div>
       </section>
@@ -194,11 +197,11 @@ export default function Home() {
       <section className="cta-section">
         <div className="container">
           <div className="cta-content">
-            <h2 className="cta-title">Ready to Reach <span>Mythical Glory?</span></h2>
-            <p className="cta-subtitle">Start with the basics and work your way up. Your journey begins here.</p>
+            <h2 className="cta-title">{t('home.cta.title.1')}<span>{t('home.cta.title.2')}</span></h2>
+            <p className="cta-subtitle">{t('home.cta.sub')}</p>
             <div className="cta-actions">
-              <Link to="/getting-started" className="btn-primary">Begin Your Journey →</Link>
-              <Link to="/glossary" className="btn-secondary">Learn the Lingo</Link>
+              <Link to="/getting-started" className="btn-primary">{t('home.cta.begin')}</Link>
+              <Link to="/glossary" className="btn-secondary">{t('home.cta.lingo')}</Link>
             </div>
           </div>
         </div>

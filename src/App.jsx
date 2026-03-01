@@ -9,6 +9,7 @@ import HeroGuides from './pages/HeroGuides'
 import Intermediate from './pages/Intermediate'
 import Advanced from './pages/Advanced'
 import ProResources from './pages/ProResources'
+import PatchNotes from './pages/PatchNotes'
 import Glossary from './pages/Glossary'
 import About from './pages/About'
 import './App.css'
@@ -26,6 +27,7 @@ function App() {
           <Route path="/intermediate" element={<Intermediate />} />
           <Route path="/advanced" element={<Advanced />} />
           <Route path="/pro-resources" element={<ProResources />} />
+          <Route path="/patch-notes" element={<PatchNotes />} />
           <Route path="/glossary" element={<Glossary />} />
           <Route path="/about" element={<About />} />
         </Routes>

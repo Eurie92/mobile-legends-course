@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 import './Footer.css'
 
 const footerLinks = {
@@ -13,13 +14,15 @@ const footerLinks = {
     { to: '/pro-resources', label: 'Pro Resources' },
   ],
   'More': [
+    { to: '/patch-notes', label: 'Patch Notes' },
     { to: '/glossary', label: 'Glossary' },
     { to: '/about', label: 'About' },
-    { to: '/', label: 'Home' },
   ],
 }
 
 export default function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="footer">
       <div className="container">
@@ -29,9 +32,9 @@ export default function Footer() {
               <span>⚔️</span>
               <span className="footer-logo-text">MLBB <span>Academy</span></span>
             </div>
-            <p className="footer-tagline">Your complete guide from Beginner to Mythical Glory. Master the Land of Dawn.</p>
+            <p className="footer-tagline">{t('footer.tagline')}</p>
             <div className="footer-disclaimer">
-              ⚠️ This is a fan-made educational resource. Not affiliated with Moonton or Mobile Legends: Bang Bang.
+              {t('footer.disclaimer')}
             </div>
           </div>
 
